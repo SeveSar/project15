@@ -594,6 +594,7 @@ textarea {
   font-weight: 400;
   border: none;
   border-radius: 0;
+  background-color: transparent;
 }
 
 input:focus,
@@ -2922,6 +2923,7 @@ h6 {
   font-size: 12px;
   line-height: 15px;
   text-transform: uppercase;
+  padding: 8px 0;
 }
 
 .main-search form input::-webkit-search-cancel-button {
@@ -5807,10 +5809,6 @@ textarea.form-control {
 
 .product-big .swiper-slide {
   padding-bottom: 101.65%;
-  opacity: .4;
-  -webkit-transition: opacity .3s linear;
-  -o-transition: opacity .3s linear;
-  transition: opacity .3s linear;
 }
 
 .product-big .swiper-slide video {
@@ -5843,10 +5841,6 @@ textarea.form-control {
   height: 34px;
   position: relative;
   left: 3px;
-}
-
-.product-big .swiper-slide-active {
-  opacity: 1;
 }
 
 .product-big .swiper-pagination {
@@ -7171,6 +7165,19 @@ textarea.form-control {
 
   .favorites__col:nth-child(odd) {
     border-right: 1px solid #EEF0F7;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  .product-big .swiper-slide {
+    opacity: .4;
+    -webkit-transition: opacity .3s linear;
+    -o-transition: opacity .3s linear;
+    transition: opacity .3s linear;
+  }
+
+  .product-big .swiper-slide-active {
+    opacity: 1;
   }
 }
 
@@ -8882,7 +8889,7 @@ textarea.form-control {
   .form-control:not([type="search"]) {
     font-size: 12px;
     line-height: 120%;
-    padding: 0 10 5px;
+    padding: 5px 10px 5px;
   }
 
   .form-control::-webkit-input-placeholder {
