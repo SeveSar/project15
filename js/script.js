@@ -25,6 +25,22 @@ if (isMobile.any()) {
 } else {
     document.body.classList.remove('isMobile')
 };
+function support_format_webp()
+{
+ var elem = document.createElement('canvas');
+
+ if (!!(elem.getContext && elem.getContext('2d')))
+ {
+  // was able or not to get WebP representation
+  return elem.toDataURL('image/webp').indexOf('data:image/webp') == 0;
+ }
+ else
+ {
+  // very old browser like IE 8, canvas not supported
+  return false;
+ }
+}
+if (support_format_webp()) document.body.classList.add('webp');
 document.addEventListener("DOMContentLoaded",(e) => {
   const mobileMenu = document.querySelector('.mobile-menu');
 const burgerBtn = document.querySelector('#burger');
@@ -698,24 +714,23 @@ if (modalOverlay) {
 })
 
 $(function() {
-  $('.detail').on('click', function(e) {
-    // detail slideAnimate
-    // e.preventDefault();
-    const $this = $(this);
-    if ($this.find('.detail__content').hasClass('show')) {
-        $this.find('.detail__content').removeClass('show');
-        $this.find('.detail__content').slideUp(350);
-        $this.find('button.toggle').removeClass('active')
-    } else {
-        $this.find('.detail__content').removeClass('show');
-        $this.find('.detail__content').slideUp(350);
-        $this.find('.detail__content').toggleClass('show');
-        $this.find('.detail__content').slideToggle(350);
-        $this.find('button.toggle').addClass('active')
+  $('[hover-products-js]').on('click', function(e) {
+    const $this = $(e.target.closest('.detail'));
+    if ($this) {
+      if ($this.find('.detail__content').hasClass('show')) {
+          $this.find('.detail__content').removeClass('show');
+          $this.find('.detail__content').slideUp(350);
+          $this.find('button.toggle').removeClass('active')
+      } else {
+          $this.find('.detail__content').removeClass('show');
+          $this.find('.detail__content').slideUp(350);
+          $this.find('.detail__content').toggleClass('show');
+          $this.find('.detail__content').slideToggle(350);
+          $this.find('button.toggle').addClass('active')
+      }
     }
   })
   // toggle-slide accordion
-  // if (!isMobile.any()) {
     $('button.toggle-slide').on('click', function(e) {
       e.preventDefault()
       const $this = $(this);
@@ -737,5 +752,4 @@ $(function() {
         }
     }
     })
-  // }
 })
